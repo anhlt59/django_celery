@@ -1,1 +1,68 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block navbar %}{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="column is-two-thirds">
+      <h1 class="title">Django Celery</h1>
+      <hr><br>
+      <div>
+        <h2 class="title is-2">Tasks</h2>
+        <h3>Choose a task:</h3>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-primary">Task 1</button>
+            <button class="button is-primary" data-type="1">Short</button>
+            <button class="button is-primary" data-type="2">Medium</button>
+            <button class="button is-primary" data-type="3">Long</button>
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-primary" data-type="1">Task 2</button>
+            <button class="button is-primary" data-type="1">Short</button>
+            <button class="button is-primary" data-type="2">Medium</button>
+            <button class="button is-primary" data-type="3">Long</button>
+          </p>
+        </div>
+      </div>
+      <br><br>
+      <div>
+        <h2 class="title is-2">Task Status</h2>
+        <br>
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Status</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="tasks">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="content container">
+    <hr>
+    <p><small><span class="text-muted">© <a href="">ANHLT</a></span></small></p>
+  </div>
+</footer>
+{% endblock %}

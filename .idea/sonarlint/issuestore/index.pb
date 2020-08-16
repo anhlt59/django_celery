@@ -17,3 +17,7 @@ X
 (compose/local/django/celery/worker/start,5\e\5e938752cd27bf0d8339304adf49f0b2bc718b59
 M
 config/settings/production.py,2\0\20f44695b3e8890908798184baa9e8d11f44ecfb
+J
+compose/local/django/start,5\4\54274901b2d71065ec690049bc6841eb34a37ff5
+O
+compose/local/django/Dockerfile,1\8\183df47db4fd2caa6e8adf01b7b266acc05d6312

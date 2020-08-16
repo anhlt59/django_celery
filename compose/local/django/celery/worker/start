@@ -4,4 +4,15 @@ set -o errexit
 set -o nounset
 
 
-celery -A config.celery_app worker -l INFO
+celery -A config.celery_app worker -l INFO -Q first_worker --hostname=worker_1@%h
+
+# %h: Hostname, including domain name.
+# %n: Hostname only.
+# %d: Domain name only.
+
+# execution pool
+# - prefork
+# - solo
+# - eventlet
+# - gevent
+# https://www.distributedpython.com/2018/10/26/celery-execution-pool/

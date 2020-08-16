@@ -5,11 +5,14 @@ IPYTHONDIR=/app/.ipython
 # Redis
 # ------------------------------------------------------------------------------
 REDIS_URL=redis://redis:6379/0
+CELERY_RESULT_BACKEND=db+postgresql+psycopg2://debug:debug@postgres:5432/django_celery
 
 # Celery
 # ------------------------------------------------------------------------------
+CELERY_BROKER_URL=redis://redis:6379/0
 
 # Flower
+# ------------------------------------------------------------------------------
 CELERY_FLOWER_USER=debug
 CELERY_FLOWER_PASSWORD=debug
 

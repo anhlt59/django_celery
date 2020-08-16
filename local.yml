@@ -25,8 +25,8 @@ services:
   postgres:
     build:
       context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: django_celery_production_postgres
+      dockerfile: ./compose/local/postgres/Dockerfile
+    image: django_celery_local_postgres
     container_name: postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
@@ -54,16 +54,21 @@ services:
     image: redis:5.0
     container_name: redis
 
-  celeryworker:
+  celeryworker: &celeryworker
     <<: *django
     image: django_celery_local_celeryworker
-#    container_name: celeryworker
+    container_name: celeryworker
     depends_on:
       - redis
       - postgres
 
     ports: []
     command: /start-celeryworker
+
+  celeryworker2:
+    <<: *celeryworker
+    container_name: celeryworker2
+    command: /start-celeryworker2
 
   celerybeat:
     <<: *django
