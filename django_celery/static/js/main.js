@@ -3,7 +3,7 @@
 
 $('.button').on('click', function() {
   $.ajax({
-    url: '/tasks/',
+    url: 'api/tasks/create',
     data: { type: $(this).data('type') },
     method: 'POST',
   })
@@ -17,15 +17,15 @@ $('.button').on('click', function() {
 
 function getStatus(taskID) {
   $.ajax({
-    url: `/tasks/${taskID}/`,
+    url: `api/tasks/${taskID}/`,
     method: 'GET'
   })
   .done((res) => {
     const html = `
       <tr>
         <td>${res.task_id}</td>
-        <td>${res.task_status}</td>
-        <td>${res.task_result}</td>
+        <td>${res.status}</td>
+        <td>${res.result}</td>
       </tr>`
     $('#tasks').prepend(html);
 
