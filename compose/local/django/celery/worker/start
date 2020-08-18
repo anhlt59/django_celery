@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 
 
-celery -A config.celery_app worker -l INFO -Q first_worker --hostname=worker_1@%h
+celery -A config.celery_app worker -l INFO --hostname=worker_1@%h
 
 # %h: Hostname, including domain name.
 # %n: Hostname only.
