@@ -12,6 +12,7 @@ router.register("users", UserViewSet)
 
 
 app_name = "api"
+
 urlpatterns = [
-    path("tasks", include("django_celery.api.celery_task_results.urls")),
+    path("tasks/", include("django_celery.api.celery_task_results.urls")),
 ] + router.urls

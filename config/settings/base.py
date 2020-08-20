@@ -19,7 +19,7 @@ if READ_DOT_ENV_FILE:
 # ------------------------------------------------------------------------------
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Ho_Chi_Minh"
 LANGUAGE_CODE = "en-us"
 SITE_ID = 1
 
@@ -73,7 +73,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "django_celery.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
+    "django_celery.api",
+    "django_celery.celery_tasks",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

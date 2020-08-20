@@ -1,6 +1,8 @@
 // custom javascript
+var host = "http://" + $(location).attr('host');
 
 $('.button').on('click', function () {
+
     if (!$("#task_result_table .table100").length) {
         var html = `
         <h2 class="title is-2">Task Result</h2>
@@ -31,8 +33,8 @@ $('.button').on('click', function () {
         $('#task_result_table').prepend(html);
     }
     $.ajax({
-        url: 'api/tasks/',
-        data: {sleep_time: $(this).attr('sleep_time')},
+        url: host + '/api/tasks/',
+        data: {type: $(this).data('sleep_time')},
         method: 'POST',
     })
         .done((res) => {
@@ -46,7 +48,7 @@ $('.button').on('click', function () {
 function getStatus(taskID) {
     var params = {task_id: taskID}
     $.ajax({
-        url: `api/tasks/`,
+        url: host + "/api/tasks/",
         method: 'GET',
         dataType: 'json',
         data: params,

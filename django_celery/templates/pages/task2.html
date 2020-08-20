@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/task2.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+  <link href="{% static 'css/util.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="column is-two-thirds">
+        <h1 class="title">Task 2</h1>
+        <hr>
+        <br>
+        <div>
+          <h2 class="title">#1</h2>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="content-inner">
+                <div class="label-counter" id="page-top">
+                  <a href="#">Users count: </a>
+                  <p id="users_count">...</p>
+                </div>
+                <div style="font-size:13px; color:#999">Last updated: ...
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <br><br>
+
+        <hr><br>
+        <div>
+          <h2 class="title">#2</h2>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="content-inner">
+                <div class="label-counter" id="page-top"><a href="#">World</a> / <a href="#">Countries</a> / <a href="#">Vietnam</a>
+                </div>
+                <div style="font-size:13px; color:#999">Last updated: ...
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px">
+                  <h1>Coronavirus Cases:</h1>
+                  <div class="maincounter-number">
+                    <span style="color:#aaa">...</span>
+                  </div>
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px">
+                  <h1>Deaths:</h1>
+                  <div class="maincounter-number">
+                    <span>...</span>
+                  </div>
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px;">
+                  <h1>Recovered:</h1>
+                  <div class="maincounter-number" style="color:#8ACA2B ">
+                    <span>...</span>
+                  </div>
+                </div>
+                <div style="margin-top:50px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

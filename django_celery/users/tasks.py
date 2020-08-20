@@ -7,7 +7,5 @@ User = get_user_model()
 
 
 @celery_app.task()
-def get_users_count(delay=3):
-    """A pointless Celery task to demonstrate usage."""
-    time.sleep(delay)
+def get_users_count():
     return User.objects.count()
