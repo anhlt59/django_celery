@@ -25,9 +25,10 @@
               <div class="content-inner">
                 <div class="label-counter" id="page-top">
                   <a href="#">Users count: </a>
-                  <p id="users_count">...</p>
+                  <span id="users_count">...</span>
                 </div>
-                <div style="font-size:13px; color:#999">Last updated: ...
+                <div style="font-size:13px; color:#999">Last updated:
+                  <span style="font-size:13px; color:#999" id="users_update_time"></span>
                 </div>
             </div>
           </div>
@@ -43,24 +44,25 @@
               <div class="content-inner">
                 <div class="label-counter" id="page-top"><a href="#">World</a> / <a href="#">Countries</a> / <a href="#">Vietnam</a>
                 </div>
-                <div style="font-size:13px; color:#999">Last updated: ...
+                <div style="font-size:13px; color:#999">Last updated:
+                  <span style="font-size:13px; color:#999" id="covid_update_time">...</span>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px">
                   <h1>Coronavirus Cases:</h1>
                   <div class="maincounter-number">
-                    <span style="color:#aaa">...</span>
+                    <span style="color:#aaa" id="covid_cases">...</span>
                   </div>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px">
                   <h1>Deaths:</h1>
                   <div class="maincounter-number">
-                    <span>...</span>
+                    <span id="covid_deaths">...</span>
                   </div>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px;">
                   <h1>Recovered:</h1>
                   <div class="maincounter-number" style="color:#8ACA2B ">
-                    <span>...</span>
+                    <span id="covid_recovered">...</span>
                   </div>
                 </div>
                 <div style="margin-top:50px;"></div>

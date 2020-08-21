@@ -53,35 +53,33 @@ function getStatus(taskID) {
         dataType: 'json',
         data: params,
         contentType: 'application/json; charset=utf-8',
-    })
-        .done((res) => {
-            if ($(`#${res.task_id}`).length) {
-                // update task_status div
-                $(`#${res.task_id}_status`).text(res.status);
-                $(`#${res.task_id}_result`).text(res.result);
-                $(`#${res.task_id}_date_done`).text(res.date_done);
-            } else {
-                // append to task_status div
-                var html = `
-                    <tr class="row100 body" id="${res.task_id}">
-                        <td class="cell100 column1">${res.task_id}</td>
-                        <td class="cell100 column2">...</td>
-                        <td class="cell100 column3" id="${res.task_id}_status">${res.status}</td>
-                        <td class="cell100 column4" id="${res.task_id}_result"></td>
-                        <td class="cell100 column5" id="${res.task_id}_date_done"></td>
-                    </tr>`
-                $('#tasks').prepend(html);
-            }
-            // reload
-            var taskStatus = res.status;
-            if (taskStatus !== 'SUCCESS' && taskStatus !== 'FAILURE') {
-                setTimeout(function () {
-                    getStatus(res.task_id);
-                }, 1000);
-            }
+    }).done((res) => {
+        if ($(`#${res.task_id}`).length) {
+            // update task_status div
+            $(`#${res.task_id}_status`).text(res.status);
+            $(`#${res.task_id}_result`).text(res.result);
+            $(`#${res.task_id}_date_done`).text(res.date_done);
+        } else {
+            // append to task_status div
+            var html = `
+                <tr class="row100 body" id="${res.task_id}">
+                    <td class="cell100 column1">${res.task_id}</td>
+                    <td class="cell100 column2">...</td>
+                    <td class="cell100 column3" id="${res.task_id}_status">${res.status}</td>
+                    <td class="cell100 column4" id="${res.task_id}_result"></td>
+                    <td class="cell100 column5" id="${res.task_id}_date_done"></td>
+                </tr>`
+            $('#tasks').prepend(html);
         }
-)
-  .fail((err) => {
+        // reload
+        var taskStatus = res.status;
+        if (taskStatus !== 'SUCCESS' && taskStatus !== 'FAILURE') {
+            setTimeout(function () {
+                getStatus(res.task_id);
+            }, 1000);
+        }
+    }
+).fail((err) => {
     alert(err)
   });
 }

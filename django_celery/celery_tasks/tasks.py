@@ -52,6 +52,6 @@ def update_users_count():
     users_count = User.objects.count()
     data = {
         "users_count": users_count,
-        "current_time": current_time,
+        "update_time": current_time,
     }
     cache.set('users_count', data)
