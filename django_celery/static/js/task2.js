@@ -8,7 +8,9 @@ function get_users_count() {
         contentType: 'application/json; charset=utf-8',
     }).done((res) => {
         // update task_status div
-        $("#users_count").text(res.users_count);
+        $("#total").text(res.total);
+        $("#superuser").text(res.superuser);
+        $("#staffuser").text(res.staffuser);
         $("#users_update_time").text(res.update_time);
     })
 }

@@ -7,43 +7,36 @@
 {% endblock %}
 
 {% block css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
-  <link href="{% static 'css/util.css' %}" rel="stylesheet">
+  <link href="{% static 'css/task3.css' %}" rel="stylesheet">
+  <link href="{% static 'css/task1.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<section class="section">
   <div class="container">
-    <div class="column is-two-thirds">
-      <h1 class="title">Task 1</h1>
-      <hr><br>
-      <div>
-        <h2 class="title">#3</h2>
-        <h3>Choose a task:</h3>
+    <section class="section">
+      <div class="column">
+        <h1 class="title">Task 3</h1>
+        <hr>
         <br>
-        <div class="field is-grouped">
-          <p class="control">
-            <button class="button is-primary">Random</button>
-            <button class="button is-primary" sleep_time="1">Short</button>
-            <button class="button is-primary" sleep_time="2">Medium</button>
-            <button class="button is-primary" sleep_time="3">Long</button>
-          </p>
-        </div>
-        <div class="field is-grouped">
-          <p class="control">
-            <button class="button is-primary" sleep_time="1">Random</button>
-            <button class="button is-primary" sleep_time="1">Short</button>
-            <button class="button is-primary" sleep_time="2">Medium</button>
-            <button class="button is-primary" sleep_time="3">Long</button>
-          </p>
+        <div class="px-0 pt-4 pb-0 mt-3 mb-3" style="z-index:0;position: relative;">
+          <h2 id="heading">Multiple tasks</h2>
+          <br>
+          <div id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+              <li id="account"><strong>Resize image</strong></li>
+              <li id="personal"><strong>Push to S3</strong></li>
+              <li id="payment"><strong>Update database</strong></li>
+              <li id="confirm"><strong>Push notify firebase</strong></li>
+            </ul>
+            <br>
+            <br>
+            <button class="button is-primary" sleep_time="">Run</button>
+            <br>
+          </div>
+        <div id="task_result_table"></div>
         </div>
       </div>
-      <br><br>
-      <div id="task_result_table">
-
-      </div>
-
-    </div>
+    </section>
   </div>
-</section>
 {% endblock %}

@@ -73,6 +73,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "django_celery.users.apps.UsersConfig",
+    "django_celery.core",
     "django_celery.api",
     "django_celery.celery_tasks",
 ]

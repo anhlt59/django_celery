@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.cache import cache
 from celery.result import AsyncResult
 
-
 from django_celery.api.celery_task_results import serializers
 from django_celery.celery_tasks import tasks
 
@@ -38,3 +37,4 @@ def get_statistic_covid(request):
 def get_users_count(request):
     data = cache.get('users_count')
     return JsonResponse(data, safe=False, status=HTTP_200_OK)
+

@@ -49,9 +49,14 @@ def update_statistic_covid():
 )
 def update_users_count():
     current_time = datetime.get_current_time()
-    users_count = User.objects.count()
+    total = User.objects.count()
+    superuser = User.objects.filter(is_superuser=True).count()
+    staffuser = User.objects.filter(is_staff=True).count()
+
     data = {
-        "users_count": users_count,
+        "total": total,
+        "superuser": superuser,
+        "staffuser": staffuser,
         "update_time": current_time,
     }
     cache.set('users_count', data)
