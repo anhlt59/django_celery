@@ -7,6 +7,7 @@ from celery.result import AsyncResult
 
 from django_celery.api.celery_task_results import serializers
 from django_celery.celery_tasks import tasks
+from config import celery_app
 
 
 @csrf_exempt
@@ -20,7 +21,7 @@ def get_task_results(request):
             status = HTTP_400_BAD_REQUEST
             data = None
     elif request.method == "POST":
-        sleep_time = int(request.POST.get("sleep_time", random.randint(1, 10)))
+        sleep_time = int(request.POST.get("sleep_time", 100))#random.randint(1, 10)))
         task = tasks.sleep.delay(sleep_time)
         data = serializers.TaskResultSerializer(task).data
         status = HTTP_200_OK
@@ -36,5 +37,15 @@ def get_statistic_covid(request):
 @csrf_exempt
 def get_users_count(request):
     data = cache.get('users_count')
+    return JsonResponse(data, safe=False, status=HTTP_200_OK)
+
+
+@csrf_exempt
+def cancel_task(request):
+    if task_id := request.GET.get("task_id"):
+        celery_app.control.revoke(task_id)
+        data = {"status": True}
+    else:
+        data = {"status": False}
     return JsonResponse(data, safe=False, status=HTTP_200_OK)
 
