@@ -2,7 +2,6 @@
 var host = "http://" + $(location).attr('host');
 
 $('.button').on('click', function () {
-
     if (!$("#task_result_table .table100").length) {
         var html = `
         <h2 class="title is-2">Task Result</h2>
@@ -32,21 +31,20 @@ $('.button').on('click', function () {
         `
         $('#task_result_table').prepend(html);
     }
+    let params = {sleep_time: $(this).attr('sleep_time')};
     $.ajax({
         url: host + '/api/tasks/',
-        data: {type: $(this).data('sleep_time')},
+        data: params,
         method: 'POST',
-    })
-        .done((res) => {
-            getStatus(res.task_id);
-        })
-        .fail((err) => {
-            alert(err);
-        });
+    }).done((res) => {
+        getStatus(res.task_id);
+    }).fail((err) => {
+        alert(err);
+    });
 });
 
 function getStatus(taskID) {
-    var params = {task_id: taskID}
+    let params = {task_id: taskID};
     $.ajax({
         url: host + "/api/tasks/",
         method: 'GET',
@@ -54,14 +52,14 @@ function getStatus(taskID) {
         data: params,
         contentType: 'application/json; charset=utf-8',
     }).done((res) => {
-        if ($(`#${res.task_id}`).length) {
-            // update task_status div
-            $(`#${res.task_id}_status`).text(res.status);
-            $(`#${res.task_id}_result`).text(res.result);
-            $(`#${res.task_id}_date_done`).text(res.date_done);
-        } else {
-            // append to task_status div
-            var html = `
+            if ($(`#${res.task_id}`).length) {
+                // update task_status div
+                $(`#${res.task_id}_status`).text(res.status);
+                $(`#${res.task_id}_result`).text(res.result);
+                $(`#${res.task_id}_date_done`).text(res.date_done);
+            } else {
+                // append to task_status div
+                var html = `
                 <tr class="row100 body" id="${res.task_id}">
                     <td class="cell100 column1">${res.task_id}</td>
                     <td class="cell100 column2">...</td>
@@ -69,41 +67,41 @@ function getStatus(taskID) {
                     <td class="cell100 column4" id="${res.task_id}_result"></td>
                     <td class="cell100 column5" id="${res.task_id}_date_done"></td>
                 </tr>`
-            $('#tasks').prepend(html);
+                $('#tasks').prepend(html);
+            }
+            // reload
+            var taskStatus = res.status;
+            if (taskStatus !== 'SUCCESS' && taskStatus !== 'FAILURE') {
+                setTimeout(function () {
+                    getStatus(res.task_id);
+                }, 1000);
+            }
         }
-        // reload
-        var taskStatus = res.status;
-        if (taskStatus !== 'SUCCESS' && taskStatus !== 'FAILURE') {
-            setTimeout(function () {
-                getStatus(res.task_id);
-            }, 1000);
-        }
-    }
-).fail((err) => {
-    alert(err)
-  });
+    ).fail((err) => {
+        alert(err)
+    });
 }
 
 (function ($) {
-	"use strict";
-	$('.column100').on('mouseover',function(){
-		var table1 = $(this).parent().parent().parent();
-		var table2 = $(this).parent().parent();
-		var verTable = $(table1).data('vertable')+"";
-		var column = $(this).data('column') + "";
+    "use strict";
+    $('.column100').on('mouseover', function () {
+        var table1 = $(this).parent().parent().parent();
+        var table2 = $(this).parent().parent();
+        var verTable = $(table1).data('vertable') + "";
+        var column = $(this).data('column') + "";
 
-		$(table2).find("."+column).addClass('hov-column-'+ verTable);
-		$(table1).find(".row100.head ."+column).addClass('hov-column-head-'+ verTable);
-	});
+        $(table2).find("." + column).addClass('hov-column-' + verTable);
+        $(table1).find(".row100.head ." + column).addClass('hov-column-head-' + verTable);
+    });
 
-	$('.column100').on('mouseout',function(){
-		var table1 = $(this).parent().parent().parent();
-		var table2 = $(this).parent().parent();
-		var verTable = $(table1).data('vertable')+"";
-		var column = $(this).data('column') + "";
+    $('.column100').on('mouseout', function () {
+        var table1 = $(this).parent().parent().parent();
+        var table2 = $(this).parent().parent();
+        var verTable = $(table1).data('vertable') + "";
+        var column = $(this).data('column') + "";
 
-		$(table2).find("."+column).removeClass('hov-column-'+ verTable);
-		$(table1).find(".row100.head ."+column).removeClass('hov-column-head-'+ verTable);
-	});
+        $(table2).find("." + column).removeClass('hov-column-' + verTable);
+        $(table1).find(".row100.head ." + column).removeClass('hov-column-head-' + verTable);
+    });
 
 })(jQuery);

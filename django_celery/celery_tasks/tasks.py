@@ -14,7 +14,7 @@ from django_celery.utils import datetime
 User = get_user_model()
 
 
-@celery_app.task()
+@celery_app.task(name="sleep")
 def sleep(n):
     time.sleep(n)
     return n

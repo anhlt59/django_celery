@@ -21,8 +21,8 @@ def get_task_results(request):
             status = HTTP_400_BAD_REQUEST
             data = None
     elif request.method == "POST":
-        sleep_time = int(request.POST.get("sleep_time", 100))#random.randint(1, 10)))
-        task = tasks.sleep.delay(sleep_time)
+        sleep_time = int(request.POST.get("sleep_time", random.randint(1, 10)))
+        task = tasks.sleep.apply_async((sleep_time,), expires=30)
         data = serializers.TaskResultSerializer(task).data
         status = HTTP_200_OK
     return JsonResponse(data, safe=False, status=status)
