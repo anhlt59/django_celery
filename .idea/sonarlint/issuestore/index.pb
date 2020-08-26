@@ -59,3 +59,7 @@ X
 (django_celery/templates/pages/task1.html,6\3\63b3401ba5f600fb96da86b4cd1e34011181aaa8
 X
 (django_celery/templates/pages/task3.html,1\1\11b905c31f49b2d1471aaf51bd4dc0cdc52c4700
+]
+-django_celery/api/celery_task_results/urls.py,f\c\fcd70b273cccbcbd46d690d8887a3871ab712920
+P
+ django_celery/static/js/task1.js,1\8\186f990b04d642cdf65d0ee7bc8efc14eff548ff
