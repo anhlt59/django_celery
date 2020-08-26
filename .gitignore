@@ -6,7 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+.idea/
 # Distribution / packaging
 .Python
 build/
@@ -328,6 +328,9 @@ django_celery/media/
 
 
 .ipython/
-.env
-.envs/*
-!.envs/.local/
+.env
+
+.envs/*
+
+!.envs/.local/
+
