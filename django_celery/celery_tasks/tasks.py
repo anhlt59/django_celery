@@ -1,6 +1,7 @@
 import time
 import requests
 import logging
+import random
 from bs4 import BeautifulSoup
 from django.core.cache import cache
 from django.contrib.auth import get_user_model
@@ -16,8 +17,27 @@ User = get_user_model()
 
 @celery_app.task()
 def sleep(n):
+    if n > 30:
+        raise Exception("sleep time expired")
     time.sleep(n)
     return n
+
+
+@celery_app.task()
+def error_handler(err=None):
+    return err
+
+
+@celery_app.task()
+def add(a, b):
+    time.sleep(random.randint(1, 3))
+    return a + b
+
+
+@celery_app.task()
+def sub(a, b):
+    time.sleep(random.randint(1, 3))
+    return a - b
 
 
 @periodic_task(
