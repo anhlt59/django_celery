@@ -8,10 +8,11 @@ from celery.result import AsyncResult
 from django_celery.api.celery_task_results import serializers
 from django_celery.celery_tasks import tasks
 from config import celery_app
+from django_celery.utils import datetime
 
 
 @csrf_exempt
-def get_task_results(request):
+def get_celery_task_results(request):
     if request.method == "GET":
         if task_id := request.GET.get("task_id", None):
             task_result = AsyncResult(task_id)
@@ -24,6 +25,25 @@ def get_task_results(request):
         sleep_time = int(request.POST.get("sleep_time", random.randint(1, 10)))
         task = tasks.sleep.apply_async((sleep_time,), expires=30)
         data = serializers.TaskResultSerializer(task).data
+        status = HTTP_200_OK
+    return JsonResponse(data, safe=False, status=status)
+
+
+@csrf_exempt
+def get_task_results(request):
+    if request.method == "POST":
+        sleep_time = int(request.POST.get("sleep_time", random.randint(1, 10)))
+        try:
+            result = tasks.sleep(sleep_time)
+        except:
+            result = None
+        data = {
+            task_id: "",
+            status: "SUCCESS" if result else "FAIL",
+            result: result,
+            traceback: "",
+            date_done: datetime.get_current_time()
+        }
         status = HTTP_200_OK
     return JsonResponse(data, safe=False, status=status)
 
