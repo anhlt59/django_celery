@@ -5,15 +5,13 @@ $('.button').on('click', function () {
     if (!$(this).attr('sleep_time')) return null;
     if (!$("#task_result_table .table100").length) {
         var html = `
-        <h2 class="title is-2">Task Result</h2>
-        <br>
+        <h2 class="title">Task Result</h2>
         <div class="table100 ver5 m-b-110">
             <div class="table100-head">
                 <table>
                     <thead>
                         <tr class="row100 head">
                             <th class="cell100 column1">ID</th>
-<!--                            <th class="cell100 column2">Task</th>-->
                             <th class="cell100 column2">Status</th>
                             <th class="cell100 column3">Result</th>
                             <th class="cell100 column4">Time</th>
@@ -56,7 +54,6 @@ $('.button').on('click', function () {
             var html = `
                 <tr class="row100 body">
                     <td class="cell100 column1"></td>
-<!--                    <td class="cell100 column2">...</td>-->
                     <td class="cell100 column2">${res.status}</td>
                     <td class="cell100 column3">${res.result}</td>
                     <td class="cell100 column4">${res.date_done}</td>

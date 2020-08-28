@@ -40,11 +40,24 @@ def sub(a, b):
     return a - b
 
 
-@periodic_task(
-    run_every=(crontab(minute='*/5')),
-    ignore_result=True
-)
-def update_statistic_covid():
+def get_users_count():
+    time.sleep(2)
+    current_time = datetime.get_current_time()
+    total = User.objects.count()
+    superuser = User.objects.filter(is_superuser=True).count()
+    staffuser = User.objects.filter(is_staff=True).count()
+
+
+    return {
+        "total": total,
+        "superuser": superuser,
+        "staffuser": staffuser,
+        "update_time": current_time,
+    }
+
+
+def get_statistic_covid():
+    time.sleep(2)
     current_time = datetime.get_current_time()
     url = "https://www.worldometers.info/coronavirus/country/viet-nam/"
     r = requests.get(url)
@@ -53,14 +66,15 @@ def update_statistic_covid():
     try:
         total, deaths, recovered = [i.text.strip() for i in soup.select('.maincounter-number')]
         data = {
-            "total":total,
-            "deaths":deaths,
-            "recovered":recovered,
-            "update_time":current_time,
+            "total": total,
+            "deaths": deaths,
+            "recovered": recovered,
+            "update_time": current_time,
         }
-        cache.set('statistic_covid', data)
     except ValueError:
         logging.warning("Can't extract response html")
+        data = None
+    return data
 
 
 @periodic_task(
@@ -68,15 +82,14 @@ def update_statistic_covid():
     ignore_result=True
 )
 def update_users_count():
-    current_time = datetime.get_current_time()
-    total = User.objects.count()
-    superuser = User.objects.filter(is_superuser=True).count()
-    staffuser = User.objects.filter(is_staff=True).count()
+    if data := get_users_count():
+        cache.set('users_count', data)
 
-    data = {
-        "total": total,
-        "superuser": superuser,
-        "staffuser": staffuser,
-        "update_time": current_time,
-    }
-    cache.set('users_count', data)
+
+@periodic_task(
+    run_every=(crontab(minute='*/5')),
+    ignore_result=True
+)
+def update_statistic_covid():
+    if data := get_statistic_covid():
+        cache.set('statistic_covid', data)

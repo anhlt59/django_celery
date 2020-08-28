@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/task4.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+  <link href="{% static 'css/task3.css' %}" rel="stylesheet">
+  <link href="{% static 'css/task1.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <section class="section">
+      <div class="column">
+        <h1 class="title">Task 3</h1>
+        <hr>
+        <br>
+        <div class="px-0 pt-4 pb-0 mt-3 mb-3" style="z-index:0;position: relative;">
+          <h2 id="heading">Multiple tasks</h2>
+          <br>
+          <div id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+              <li id="account"><strong>Resize image</strong></li>
+              <li id="personal"><strong>Push to S3</strong></li>
+              <li id="payment"><strong>Update database</strong></li>
+              <li id="confirm"><strong>Push notify firebase</strong></li>
+            </ul>
+            <br>
+            <br>
+            <button class="button is-primary">Run</button>
+            <button class="button is-secondary" disabled>Cancel</button>
+            <br>
+          </div>
+        <div id="task_result_table"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

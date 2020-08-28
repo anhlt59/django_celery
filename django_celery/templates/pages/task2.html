@@ -22,18 +22,18 @@
               <div class="content-inner">
                 <div class="label-counter">
                   Total users:
-                  <span style="color:#aaa" id="total">...</span>
+                  <span style="color:#aaa" id="total">{{ user_statistic.total }}</span>
                 </div>
                 <div class="label-counter">
                   Admin users:
-                  <span id="superuser">...</span>
+                  <span id="superuser">{{ user_statistic.superuser }}</span>
                 </div>
                 <div class="label-counter">
                   Staff users:
-                  <span style="color:#8ACA2B" id="staffuser">...</span>
+                  <span style="color:#8ACA2B" id="staffuser">{{ user_statistic.staffuser }}</span>
                 </div>
                 <div style="font-size:13px; color:#999">Last updated:
-                  <span style="font-size:13px; color:#999" id="users_update_time"></span>
+                  <span style="font-size:13px; color:#999" id="users_update_time">{{ user_statistic.update_time }}</span>
                 </div>
               </div>
             </div>
@@ -48,28 +48,27 @@
           <div class="row">
             <div class="col-md-8">
               <div class="content-inner">
-                <div class="label-counter" id="page-top"><a href="#">World</a> / <a href="#">Countries</a> / <a
-                        href="#">Vietnam</a>
+                <div class="label-counter" id="page-top"><a href="#">World</a> / <a href="#">Countries</a> / <a href="#">Vietnam</a>
                 </div>
                 <div style="font-size:13px; color:#999">Last updated:
-                  <span style="font-size:13px; color:#999" id="covid_update_time">...</span>
+                  <span style="font-size:13px; color:#999" id="covid_update_time">{{ covid_statistic.update_time }}</span>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px">
                   <h1>Coronavirus Cases:</h1>
                   <div class="maincounter-number">
-                    <span style="color:#aaa" id="covid_cases">...</span>
+                    <span style="color:#aaa" id="covid_cases">{{ covid_statistic.total }}</span>
                   </div>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px">
                   <h1>Deaths:</h1>
                   <div class="maincounter-number">
-                    <span id="covid_deaths">...</span>
+                    <span id="covid_deaths">{{ covid_statistic.deaths }}</span>
                   </div>
                 </div>
                 <div id="maincounter-wrap" style="margin-top:15px;">
                   <h1>Recovered:</h1>
                   <div class="maincounter-number">
-                    <span style="color:#8ACA2B" id="covid_recovered">...</span>
+                    <span style="color:#8ACA2B" id="covid_recovered">{{ covid_statistic.recovered }}</span>
                   </div>
                 </div>
                 <div style="margin-top:50px;"></div>

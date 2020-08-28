@@ -6,36 +6,76 @@
   <script type="text/javascript" src="{% static 'js/task3.js' %}"></script>
 {% endblock %}
 
-{% block css %}
-  <link href="{% static 'css/task3.css' %}" rel="stylesheet">
-  <link href="{% static 'css/task1.css' %}" rel="stylesheet">
-{% endblock %}
+{% block css %}{% endblock %}
 
 {% block content %}
   <div class="container">
     <section class="section">
       <div class="column">
-        <h1 class="title">Task 3</h1>
+        <h1 class="title">Task 2</h1>
         <hr>
         <br>
-        <div class="px-0 pt-4 pb-0 mt-3 mb-3" style="z-index:0;position: relative;">
-          <h2 id="heading">Multiple tasks</h2>
-          <br>
-          <div id="msform">
-            <!-- progressbar -->
-            <ul id="progressbar">
-              <li id="account"><strong>Resize image</strong></li>
-              <li id="personal"><strong>Push to S3</strong></li>
-              <li id="payment"><strong>Update database</strong></li>
-              <li id="confirm"><strong>Push notify firebase</strong></li>
-            </ul>
-            <br>
-            <br>
-            <button class="button is-primary">Run</button>
-            <button class="button is-secondary" disabled>Cancel</button>
-            <br>
+        <div>
+          <h2 class="title">#1</h2>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="content-inner">
+                <div class="label-counter">
+                  Total users:
+                  <span style="color:#aaa" id="total">...</span>
+                </div>
+                <div class="label-counter">
+                  Admin users:
+                  <span id="superuser">...</span>
+                </div>
+                <div class="label-counter">
+                  Staff users:
+                  <span style="color:#8ACA2B" id="staffuser">...</span>
+                </div>
+                <div style="font-size:13px; color:#999">Last updated:
+                  <span style="font-size:13px; color:#999" id="users_update_time"></span>
+                </div>
+              </div>
+            </div>
           </div>
-        <div id="task_result_table"></div>
+        </div>
+        <br><br>
+
+        <hr>
+        <br>
+        <div>
+          <h2 class="title">#2</h2>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="content-inner">
+                <div class="label-counter" id="page-top"><a href="#">World</a> / <a href="#">Countries</a> / <a
+                        href="#">Vietnam</a>
+                </div>
+                <div style="font-size:13px; color:#999">Last updated:
+                  <span style="font-size:13px; color:#999" id="covid_update_time">...</span>
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px">
+                  <h1>Coronavirus Cases:</h1>
+                  <div class="maincounter-number">
+                    <span style="color:#aaa" id="covid_cases">...</span>
+                  </div>
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px">
+                  <h1>Deaths:</h1>
+                  <div class="maincounter-number">
+                    <span id="covid_deaths">...</span>
+                  </div>
+                </div>
+                <div id="maincounter-wrap" style="margin-top:15px;">
+                  <h1>Recovered:</h1>
+                  <div class="maincounter-number">
+                    <span style="color:#8ACA2B" id="covid_recovered">...</span>
+                  </div>
+                </div>
+                <div style="margin-top:50px;"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
