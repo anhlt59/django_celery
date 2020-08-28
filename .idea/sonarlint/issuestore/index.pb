@@ -63,3 +63,5 @@ X
 -django_celery/api/celery_task_results/urls.py,f\c\fcd70b273cccbcbd46d690d8887a3871ab712920
 P
  django_celery/static/js/task1.js,1\8\186f990b04d642cdf65d0ee7bc8efc14eff548ff
+O
+compose/local/django/entrypoint,1\6\166670ea8a98121d280f3f17332c0f156f51fa36
