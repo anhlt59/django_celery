@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django_celery.utils import datetime
 
 
 class TaskResultSerializer(serializers.Serializer):
@@ -18,7 +19,8 @@ class TaskResultSerializer(serializers.Serializer):
         return obj.result
 
     def get_date_done(self, obj):
-        return obj.date_done
+        if date_done := obj.date_done:
+            return datetime.convert_date_time(date_done)
 
     def get_traceback(self, obj):
         return obj.traceback

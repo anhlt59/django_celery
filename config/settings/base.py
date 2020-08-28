@@ -20,6 +20,7 @@ if READ_DOT_ENV_FILE:
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
 TIME_ZONE = "Asia/Ho_Chi_Minh"
+CUSTOM_DATETIME_FORMAT = "%B %d, %Y, %I:%M %p"
 LANGUAGE_CODE = "en-us"
 SITE_ID = 1
 

@@ -38,11 +38,11 @@ def get_task_results(request):
         except:
             result = None
         data = {
-            task_id: "",
-            status: "SUCCESS" if result else "FAIL",
-            result: result,
-            traceback: "",
-            date_done: datetime.get_current_time()
+            "task_id": "",
+            "status": "SUCCESS" if result else "FAIL",
+            "result": result,
+            "traceback": "",
+            "date_done": datetime.get_current_time()
         }
         status = HTTP_200_OK
     return JsonResponse(data, safe=False, status=status)
