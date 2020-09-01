@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block javascript %}
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/task5.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+{#  <link href="{% static 'css/task1.css' %}" rel="stylesheet">#}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <section class="section">
+      <h1 class="title">Task 5: Video Uploader</h1>
+      <hr>
+      <form enctype="multipart/form-data" method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="button is-primary" type="submit" value="Upload"/>
+      </form>
+      <hr>
+      <br>
+      <div class="card-deck">
+        <div class="card">
+          <video width='400' controls class="card-img-top">
+            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+          </video>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <video width='400' controls class="card-img-top">
+            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+          </video>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <video width='400' controls class="card-img-top">
+            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>
+            Your browser does not support the video tag.
+          </video>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      {#      <div class="card-group">#}
+      {#        <div class="card">#}
+      {#          <video width='400' controls class="card-img-top">#}
+      {#            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>#}
+      {#            Your browser does not support the video tag.#}
+      {#          </video>#}
+      {#          <div class="card-body">#}
+      {#            <h5 class="card-title">Card title</h5>#}
+      {#            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional#}
+      {#              content. This content is a little bit longer.</p>#}
+      {#          </div>#}
+      {#          <div class="card-footer">#}
+      {#            <small class="text-muted">Last updated 3 mins ago</small>#}
+      {#          </div>#}
+      {#        </div>#}
+      {#        <div class="card">#}
+      {#          <video width='400' controls class="card-img-top">#}
+      {#            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>#}
+      {#            Your browser does not support the video tag.#}
+      {#          </video>#}
+      {#          <div class="card-body">#}
+      {#            <h5 class="card-title">Card title</h5>#}
+      {#            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>#}
+      {#          </div>#}
+      {#          <div class="card-footer">#}
+      {#            <small class="text-muted">Last updated 3 mins ago</small>#}
+      {#          </div>#}
+      {#        </div>#}
+      {#        <div class="card">#}
+      {#          <video width='400' controls class="card-img-top">#}
+      {#            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>#}
+      {#            Your browser does not support the video tag.#}
+      {#          </video>#}
+      {#          <div class="card-body">#}
+      {#            <h5 class="card-title">Card title</h5>#}
+      {#            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional#}
+      {#              content. This card has even longer content than the first to show that equal height action.</p>#}
+      {#          </div>#}
+      {#          <div class="card-footer">#}
+      {#            <small class="text-muted">Last updated 3 mins ago</small>#}
+      {#          </div>#}
+      {#        </div>#}
+      {#      </div>#}
+      <br><br>
+      <hr>
+    </section>
+  </div>
+{% endblock %}

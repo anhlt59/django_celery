@@ -41,7 +41,7 @@ def sub(a, b):
 
 
 def get_users_count():
-    time.sleep(2)
+    # time.sleep(2)
     current_time = datetime.get_current_time()
     total = User.objects.count()
     superuser = User.objects.filter(is_superuser=True).count()
@@ -57,7 +57,7 @@ def get_users_count():
 
 
 def get_statistic_covid():
-    time.sleep(2)
+    # time.sleep(2)
     current_time = datetime.get_current_time()
     url = "https://www.worldometers.info/coronavirus/country/viet-nam/"
     r = requests.get(url)

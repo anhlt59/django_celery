@@ -82,7 +82,10 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
-MIGRATION_MODULES = {"sites": "django_celery.contrib.sites.migrations"}
+MIGRATION_MODULES = {
+    "sites": "django_celery.contrib.sites.migrations",
+    "celery_tasks": "django_celery.core.migrations"
+}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
